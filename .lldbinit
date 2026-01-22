@@ -1,0 +1,7 @@
+command alias -h "Recursively dumps Views" -H "dump_autoLayout will recursiviley dump the root view and all the subviews and their frames." -- dump_autoLayout expression -l objc -O -- [[[[[UIApplication sharedApplication] keyWindow] rootViewController] view] recursiveDescription]
+
+command alias -h "like po but for objc" -H "like po but it excutes the code in objc context, for instance we can use memory adress to print out NSObjects." -- cpo expression -l objc -O --
+
+command alias lpo expression -l %1 -O --
+
+command alias -h "regex image lookup" -H "using image lookup recursively" -- ilr image lookup
