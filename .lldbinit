@@ -11,3 +11,8 @@ command regex -h "lookup and output in a more readable format" rsearch 's/(.+)/s
 command regex -h "toggles visibility of a UIView, or NSView" tv 's/(.+)/expression -l objc -O -- @import QuartzCore; [%1 setHidden:!(BOOL)[%1 isHidden]]; (void) [CATransaction flush];/'
 
 command regex -h "gives the type of class, works both with objc and swift context." -s "getcls <expression>" getcls 's/(([0-9]|\$|\@|\[).*)/cpo [%1 class]/' 's/(.+)/expression -l swift -O -- type(of: %1)/'
+
+commabd alias -h "Print in hex in objc context" -H "Print value in obj-c context in hexadecimal" -- cpx express
+ion -f x -l objc --
+
+settings set target.skip-prologue false
