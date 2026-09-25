@@ -2,6 +2,8 @@ command alias -h "Recursively dumps Views" -H "dump_autoLayout will recursiviley
 
 command alias -h "like po but for objc" -H "like po but it excutes the code in objc context, for instance we can use memory adress to print out NSObjects." -- cpo expression -l objc -O --
 
+command alias -h "like p but for objc" -H "like p but it excutes the code in objc context" -- cp expression -l objc -O --
+
 command alias lpo expression -l %1 -O --
 
 command regex -h "regex image lookup" rlook 's/(.+)/image lookup -rn %1/'
@@ -12,7 +14,28 @@ command regex -h "toggles visibility of a UIView, or NSView" tv 's/(.+)/expressi
 
 command regex -h "gives the type of class, works both with objc and swift context." -s "getcls <expression>" getcls 's/(([0-9]|\$|\@|\[).*)/cpo [%1 class]/' 's/(.+)/expression -l swift -O -- type(of: %1)/'
 
-commabd alias -h "Print in hex in objc context" -H "Print value in obj-c context in hexadecimal" -- cpx express
-ion -f x -l objc --
+command alias -h "Print in hex in objc context" -H "Print value in obj-c context in hexadecimal" -- cpx expression -f x -l objc --
+
+command regex -h "regex image lookup with verbose" vrlook 's/(.+)/image lookup -vrn %1/'
 
 settings set target.skip-prologue false
+
+command alias -h "reads one or more registers" -H "read one or more registers" -- rread register read
+
+command alias -h "dumps memory from sp" -H "dumps the top four memory addresses of the stack" -- dumpstack memory read $sp
+
+
+
+
+
+
+
+
+command script import ~/lldb/helloworld.py
+
+command alias reload_script command source ~/.lldbinit
+
+command regex gdocumentation 's/(.+)/script import os;os.system("open https:" + chr(47) + chr(47) + "lldb.llvm.org" + chr(47) + "python_reference" + chr(47) + "lldb.%1-class.html")/'
+
+
+command script import ~/lldb/BreakAfterRegex.py
